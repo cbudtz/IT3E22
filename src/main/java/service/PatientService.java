@@ -1,9 +1,6 @@
 package service;
 
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.ArrayList;
@@ -26,6 +23,19 @@ public class PatientService {
         patients.add(patient);
         //---
         return patients;
+    }
+
+    /**
+     * Verdens dummeste navne converter!
+     * @param patient
+     * @return
+     */
+    @POST
+    public Patient postPatient(Patient patient){
+        String navn = patient.getName();
+        navn = "Fru. " + navn;
+        patient.setName(navn);
+        return patient;
     }
 
 }
